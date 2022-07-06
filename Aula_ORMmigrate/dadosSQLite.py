@@ -1,4 +1,4 @@
-from databaseSQLite import dbLite,PetAdocao
+from databaseSQLite import dbLite,PetAdocao, Tutor
 from datetime import datetime
 
 ## -- Recriar Banco de dados
@@ -22,3 +22,17 @@ for linha in pets:
     print(f'Dados: id- {linha.id } - {linha.apelido} - {linha.responsavel} - {linha.dataregistro}')
 
 print(pets)
+
+# Carregar Tutor
+
+tutor_1 = Tutor('Ana Maria Braga','Rua que sobe','1199898989',pets[3].id)
+tutor_2 = Tutor('Fausto Silva','Rua X','1199898989',pets[0].id)
+
+dbLite.session.add(tutor_1)
+dbLite.session.add(tutor_2)
+dbLite.session.commit()
+print(tutor_1)
+print(tutor_2)
+
+dbLite.session.close()
+

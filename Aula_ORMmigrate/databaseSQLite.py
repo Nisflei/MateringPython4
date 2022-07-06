@@ -27,3 +27,16 @@ class PetAdocao(dbLite.Model):
         self.castrado = castrado
         self.responsavel = responsavel
         self.contato = contato
+
+class Tutor(dbLite.Model):
+    id = dbLite.Column(dbLite.Integer, primary_key = True)
+    nome = dbLite.Column(dbLite.String(100))
+    ender = dbLite.Column(dbLite.String(100))
+    fone = dbLite.Column(dbLite.String(20))
+    petadocao_id = dbLite.Column(dbLite.Integer, dbLite.ForeignKey('pet_adocao.id'), nullable=True)
+
+    def __init__(self,nome,ender,fone,petadocao_id):
+        self.nome = nome
+        self.ender = ender
+        self.fone = fone
+        self.petadocao_id = petadocao_id
